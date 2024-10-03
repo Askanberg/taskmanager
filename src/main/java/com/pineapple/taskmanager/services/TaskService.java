@@ -1,13 +1,13 @@
 package com.pineapple.taskmanager.services;
 
-import com.pineapple.taskmanager.entities.Task;
-import com.pineapple.taskmanager.entities.User;
+import com.pineapple.taskmanager.domain.Task;
+import com.pineapple.taskmanager.domain.User;
 import com.pineapple.taskmanager.repositories.TaskRepository;
 import com.pineapple.taskmanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
-
+/*
 public class TaskService {
 
     @Autowired
@@ -25,3 +25,5 @@ public class TaskService {
         taskRepository.delete(task);
     }
 }
+
+ */

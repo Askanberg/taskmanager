@@ -1,0 +1,5 @@
+com/pineapple/taskmanager/TaskmanagerApplicationTests.class
+com/pineapple/taskmanager/repositories/ProjectRepositoryIntegrationTest.class
+com/pineapple/taskmanager/repositories/UserRepositoryIntegrationTest.class
+com/pineapple/taskmanager/repositories/TaskRepositoryIntegrationTest.class
+com/pineapple/taskmanager/TestDataUtilities.class

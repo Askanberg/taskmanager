@@ -1,10 +1,9 @@
 package com.pineapple.taskmanager.repositories;
 
-import com.pineapple.taskmanager.entities.Project;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.pineapple.taskmanager.domain.Project;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ProjectRepository extends JpaRepository<Project, Long> {
-    Optional<Project> findByUserId(Long user_id);
+public interface ProjectRepository extends CrudRepository<Project, Long> {
+
 }

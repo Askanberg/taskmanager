@@ -1,10 +1,8 @@
 package com.pineapple.taskmanager.repositories;
 
-import com.pineapple.taskmanager.entities.Task;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.pineapple.taskmanager.domain.Task;
+import org.springframework.data.repository.CrudRepository;
 
-public interface TaskRepository extends JpaRepository<Task, Long> {
-    Optional<Task> findByUserId(Long user_id);
+public interface TaskRepository extends CrudRepository<Task, Long> {
 }

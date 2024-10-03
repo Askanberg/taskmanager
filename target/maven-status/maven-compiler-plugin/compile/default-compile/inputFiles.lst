@@ -1,0 +1,13 @@
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/TaskmanagerApplication.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/controllers/UserController.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/domain/Project.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/domain/Task.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/domain/User.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/repositories/ProjectRepository.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/repositories/TaskRepository.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/repositories/UserRepository.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/services/ProjectService.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/services/TaskService.java
+/home/master/Desktop/PROG/taskmanager/src/main/java/com/pineapple/taskmanager/services/UserService.java

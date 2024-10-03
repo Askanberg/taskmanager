@@ -1,0 +1,10 @@
+com/pineapple/taskmanager/domain/Task.class
+com/pineapple/taskmanager/domain/User.class
+com/pineapple/taskmanager/TaskmanagerApplication.class
+com/pineapple/taskmanager/repositories/ProjectRepository.class
+com/pineapple/taskmanager/domain/User$UserBuilder.class
+com/pineapple/taskmanager/repositories/TaskRepository.class
+com/pineapple/taskmanager/repositories/UserRepository.class
+com/pineapple/taskmanager/domain/Task$TaskBuilder.class
+com/pineapple/taskmanager/domain/Project.class
+com/pineapple/taskmanager/domain/Project$ProjectBuilder.class

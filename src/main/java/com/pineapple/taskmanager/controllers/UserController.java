@@ -1,6 +1,6 @@
-package com.pineapple.taskmanager.controllers;
+/*package com.pineapple.taskmanager.controllers;
 
-import com.pineapple.taskmanager.entities.User;
+import com.pineapple.taskmanager.domain.User;
 import com.pineapple.taskmanager.repositories.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,3 +43,4 @@ public class UserController {
     }
 
 }
+*/
