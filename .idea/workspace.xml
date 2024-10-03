@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a21a8c0a-e81a-4b3a-a83b-a2f11d407bd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Project.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/src/main/java/com/pineapple/taskmanager/TaskmanagerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/taskmanager-spring/src/test/java/com/pineapple/taskmanager/TaskmanagerApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/ProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/TaskRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/TaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
