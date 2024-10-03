@@ -17,7 +17,7 @@ public class ProjectService {
         return projectRepository.findByUserId(userId);
     }
 
-    public Project createProjcet(Project project) {
+    public Project createProject(Project project) {
         return projectRepository.save(project);
     }
 
