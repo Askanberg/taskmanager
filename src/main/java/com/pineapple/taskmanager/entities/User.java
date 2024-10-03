@@ -3,10 +3,12 @@ package com.pineapple.taskmanager.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
@@ -21,6 +23,6 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
     private List<Task> tasks;
 }

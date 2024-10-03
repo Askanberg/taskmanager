@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a21a8c0a-e81a-4b3a-a83b-a2f11d407bd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/TestDataUtilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

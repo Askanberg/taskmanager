@@ -3,10 +3,12 @@ package com.pineapple.taskmanager.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "projects")
 @NoArgsConstructor
@@ -15,12 +17,12 @@ import java.util.List;
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projects_id_seq")
     private long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project_id", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
 }
