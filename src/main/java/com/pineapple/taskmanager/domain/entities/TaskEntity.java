@@ -1,18 +1,17 @@
-package com.pineapple.taskmanager.domain;
+package com.pineapple.taskmanager.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "tasks")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Task {
+@Table(name = "tasks")
+public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,22 +21,21 @@ public class Task {
     private String description;
 
     private boolean completed;
-    private LocalDate dueDate;
+    //private LocalDate dueDate;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id")
-    private Project project;
+    private UserEntity userEntity;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "project_id")
+//    private ProjectEntity projectEntity;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Task)) return false;
-        Task task = (Task) o;
-        return id == task.id && Objects.equals(title, task.title);
+        if (!(o instanceof TaskEntity)) return false;
+        TaskEntity taskEntity = (TaskEntity) o;
+        return id == taskEntity.id && Objects.equals(title, taskEntity.title);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.pineapple.taskmanager.domain;
+package com.pineapple.taskmanager.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +12,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +21,15 @@ public class User {
     private String username;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Task> tasks;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<TaskEntity.java> taskEntities;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return id == user.id && Objects.equals(username, user.username);
+        if (!(o instanceof UserEntity)) return false;
+        UserEntity userEntity = (UserEntity) o;
+        return id == userEntity.id && Objects.equals(username, userEntity.username);
     }
 
     @Override

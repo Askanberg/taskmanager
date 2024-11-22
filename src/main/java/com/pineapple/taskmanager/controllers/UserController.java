@@ -1,46 +1,33 @@
-/*package com.pineapple.taskmanager.controllers;
+package com.pineapple.taskmanager.controllers;
 
-import com.pineapple.taskmanager.domain.User;
-import com.pineapple.taskmanager.repositories.UserRepository;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
+import com.pineapple.taskmanager.domain.dto.UserDto;
+import com.pineapple.taskmanager.domain.entities.UserEntity;
+import com.pineapple.taskmanager.mappers.Mapper;
+import com.pineapple.taskmanager.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
 
-    private UserRepository userRepository;
+    private UserService userService;
+    private Mapper<UserEntity, UserDto> userMapper;
 
-    UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @GetMapping("/users")
-    List<User> allUsers() {
-        return userRepository.findAll();
-    }
-
-    @PostMapping("/users")
-    User newUser(@RequestBody User newUser) {
-        return userRepository.save(newUser);
-    }
-
-    @GetMapping("/users")
-    User oneUser(@PathVariable Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> UserNotFoundException(userId));
+    public UserController(UserService userService, Mapper<UserEntity, UserDto> userMapper) {
+        this.userService = userService;
+        this.userMapper = userMapper;
     }
 
 
-    @DeleteMapping
-    void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
-    }
-
-    //********************** Help methods *************************
-    private RuntimeException UserNotFoundException(Long userId) {
-        return new RuntimeException("User with id " + userId + " could not be found.");
+    @PostMapping(path = "/users")
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
+        UserEntity userEntity = userMapper.mapFrom(user);
+        UserEntity savedUserEntity = userService.createUser(userEntity);
+        return new ResponseEntity<>(userMapper.mapTo(savedUserEntity), HttpStatus.CREATED);
     }
 
 }
-*/
+

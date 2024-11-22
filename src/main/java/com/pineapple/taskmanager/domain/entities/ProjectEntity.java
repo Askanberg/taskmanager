@@ -1,4 +1,4 @@
-package com.pineapple.taskmanager.domain;
+package com.pineapple.taskmanager.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,7 +12,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Project {
+public class ProjectEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "projects_id_seq")
@@ -20,19 +20,19 @@ public class Project {
 
     private String name;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<Task> tasks;
+//    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+//   private List<TaskEntity.java> taskEntities;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity userEntity;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Project)) return false;
-        Project project = (Project) o;
-        return id == project.id && Objects.equals(name, project.name);
+        if (!(o instanceof ProjectEntity)) return false;
+        ProjectEntity projectEntity = (ProjectEntity) o;
+        return id == projectEntity.id && Objects.equals(name, projectEntity.name);
     }
 
     @Override

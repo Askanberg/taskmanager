@@ -1,90 +1,91 @@
 package com.pineapple.taskmanager;
 
-import com.pineapple.taskmanager.domain.Project;
-import com.pineapple.taskmanager.domain.Task;
-import com.pineapple.taskmanager.domain.User;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import com.pineapple.taskmanager.domain.dto.UserDto;
+import com.pineapple.taskmanager.domain.entities.ProjectEntity;
+import com.pineapple.taskmanager.domain.entities.TaskEntity;
+import com.pineapple.taskmanager.domain.entities.UserEntity;
 
 public class TestDataUtilities {
 
     private TestDataUtilities() {
 
     }
-    public static Task createTestTaskA(User user) {
-        return Task.builder()
+    public static TaskEntity createTestTaskEntityA(UserEntity userEntity) {
+        return TaskEntity.builder()
                 .id(1L)
                 .title("TaskA")
                 .description("ContentA")
                 .completed(false)
-                .dueDate(LocalDate.of(2024, 12, 8))
-                .user(user)
+                //.dueDate(LocalDate.of(2024, 12, 8))
+                .userEntity(userEntity)
                 .build();
     }
-    public static Task createTestTaskB(User user) {
-        return Task.builder()
+    public static TaskEntity createTestTaskDtoA(UserEntity userEntity) {
+        return TaskEntity.builder()
+                .id(1L)
+                .title("TaskA")
+                .description("ContentA")
+                .completed(false)
+                //.dueDate(LocalDate.of(2024, 12, 8))
+                .userEntity(userEntity)
+                .build();
+    }
+    public static TaskEntity createTestTaskB(UserEntity userEntity) {
+        return TaskEntity.builder()
                 .id(2L)
                 .title("TaskB")
                 .description("ContentB")
                 .completed(true)
-                .dueDate(LocalDate.of(2024, 12, 8))
-                .user(user)
+                //.dueDate(LocalDate.of(2024, 12, 8))
+                .userEntity(userEntity)
                 .build();
     }
-    public static Task createTestTaskC(User user) {
-        return Task.builder()
+    public static TaskEntity createTestTaskC(UserEntity userEntity) {
+        return TaskEntity.builder()
                 .id(3L)
                 .title("TaskC")
                 .description("ContentC")
                 .completed(true)
-                .dueDate(LocalDate.of(2024, 10, 1))
-                .user(user)
+                //.dueDate(LocalDate.of(2024, 10, 1))
+                .userEntity(userEntity)
                 .build();
     }
 
-    public static User createTestUserA() {
-        return User.builder()
+    public static UserEntity createTestUserA() {
+        return UserEntity.builder()
                 .id(1L)
-                .username("userA")
-                .password("passwordA")
-                .tasks(new ArrayList<>())
+                .username("UserA")
+                .password("PasswordA")
                 .build();
 
     }
-    public static User createTestUserB() {
-        return User.builder()
+    public static UserEntity createTestUserB() {
+        return UserEntity.builder()
                 .id(2L)
-                .username("userB")
-                .password("passwordB")
-                .tasks(new ArrayList<>())
+                .username("UserB")
+                .password("PasswordB")
                 .build();
     }
-    public static User createTestUserC() {
-        return User.builder()
+    public static UserEntity createTestUserC() {
+        return UserEntity.builder()
                 .id(3L)
-                .username("userC")
-                .password("passwordC")
-                .tasks(new ArrayList<>())
+                .username("UserC")
+                .password("PasswordC")
                 .build();
     }
 
-    public static Project createTestProjectA(User user) {
-        return Project.builder()
+    public static ProjectEntity createTestProjectA(UserEntity userEntity) {
+        return ProjectEntity.builder()
                 .id(1L)
                 .name("ProjectA")
-                .tasks(new ArrayList<>())
-                .user(user)
+                .userEntity(userEntity)
                 .build();
     }
-    public static Project createTestProjectB(User user) {
-        return Project.builder()
+    public static ProjectEntity createTestProjectB(UserEntity userEntity) {
+        return ProjectEntity.builder()
                 .id(2L)
                 .name("ProjectB")
-                .tasks(new ArrayList<>())
-                .user(user)
+                .userEntity(userEntity)
                 .build();
     }
 }

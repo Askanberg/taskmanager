@@ -1,29 +1,8 @@
 package com.pineapple.taskmanager.services;
 
-import com.pineapple.taskmanager.domain.Task;
-import com.pineapple.taskmanager.domain.User;
-import com.pineapple.taskmanager.repositories.TaskRepository;
-import com.pineapple.taskmanager.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.pineapple.taskmanager.domain.entities.TaskEntity;
 
-import java.util.Optional;
-/*
-public class TaskService {
+public interface TaskService {
 
-    @Autowired
-    private TaskRepository taskRepository;
-
-    public Optional<Task> getAllTasksByUser(Long userId) {
-        return taskRepository.findByUserId(userId);
-    }
-
-    public Task createTask(Task task) {
-        return taskRepository.save(task);
-    }
-
-    public void deleteTask(Task task) {
-        taskRepository.delete(task);
-    }
+    TaskEntity createTask(TaskEntity taskEntity);
 }
-
- */
