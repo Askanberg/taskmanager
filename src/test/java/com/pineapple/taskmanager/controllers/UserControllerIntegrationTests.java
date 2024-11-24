@@ -1,11 +1,9 @@
 package com.pineapple.taskmanager.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pineapple.taskmanager.TestDataUtilities;
-import com.pineapple.taskmanager.domain.dto.UserDto;
-import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.domain.entities.UserEntity;
+import com.pineapple.taskmanager.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +21,17 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
 public class UserControllerIntegrationTests {
+
+    private UserService userService;
     private MockMvc mockMvc;
 
     private ObjectMapper objectMapper;
 
     @Autowired
-    public UserControllerIntegrationTests(MockMvc mockMvc, ObjectMapper objectMapper) {
+    public UserControllerIntegrationTests(MockMvc mockMvc, ObjectMapper objectMapper, UserService userService) {
         this.mockMvc = mockMvc;
         this.objectMapper = objectMapper;
+        this.userService = userService;
     }
 
     @Test
@@ -64,6 +65,49 @@ public class UserControllerIntegrationTests {
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$.password").value("PasswordA")
         );
+    }
+
+    @Test
+    public void testThatListUsersReturnsHttpStatus200() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatListUsersReturnsListOfUsers() throws Exception {
+        UserEntity testUserA = TestDataUtilities.createTestUserA();
+        userService.createUser(testUserA);
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].id").isNumber()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].username").value("UserA")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].password").value("PasswordA")
+        );
+    }
+
+    @Test
+    public void testThatGetUserReturnsHttpStatus200IfUserExist() throws Exception {
+        UserEntity testUserA = TestDataUtilities.createTestUserA();
+        userService.createUser(testUserA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/users/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatGetUserReturnsHttpStatus404IfUserDontExist() throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/users/99")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
 }

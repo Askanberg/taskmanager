@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pineapple.taskmanager.TestDataUtilities;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.domain.entities.UserEntity;
+import com.pineapple.taskmanager.services.TaskService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,15 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 public class TaskControllerIntegrationTests {
 
+    private TaskService taskService;
     private MockMvc mockMvc;
     private ObjectMapper objectMapper;
 
     @Autowired
-    public TaskControllerIntegrationTests(MockMvc mockMvc) {
+    public TaskControllerIntegrationTests(MockMvc mockMvc, TaskService taskService) {
         this.mockMvc = mockMvc;
         this.objectMapper = new ObjectMapper();
+        this.taskService = taskService;
     }
 
     @Test
@@ -63,5 +66,50 @@ public class TaskControllerIntegrationTests {
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$.description").value("ContentA")
         );
+    }
+
+    @Test
+    public void testThatListTasksReturnsHttpStatus200 () throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/tasks")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+
+    @Test
+    public void testThatListTasksReturnsListOfTasks() throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserA());
+        taskService.createTask(testTaskA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/tasks")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].id").isNumber()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].title").value("TaskA")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].description").value("ContentA")
+        );
+    }
+
+    @Test
+    public void testThatGetUserReturnsHttpStatus200IfUserExists () throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserA());
+        taskService.createTask(testTaskA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/tasks/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatGetUserReturnsHttpStatus404IfUserDontExist () throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/tasks/99")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }
