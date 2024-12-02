@@ -1,10 +1,8 @@
 package com.pineapple.taskmanager.controllers;
 
 import com.pineapple.taskmanager.domain.dto.TaskDto;
-import com.pineapple.taskmanager.domain.dto.UserDto;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 
-import com.pineapple.taskmanager.domain.entities.UserEntity;
 import com.pineapple.taskmanager.mappers.Mapper;
 import com.pineapple.taskmanager.services.TaskService;
 import org.springframework.http.HttpStatus;
@@ -28,9 +26,9 @@ public class TaskController {
 
 
     @PostMapping(path = "/tasks")
-    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto task) {
+    public ResponseEntity<TaskDto> saveTask(@RequestBody TaskDto task) {
         TaskEntity taskEntity = taskMapper.mapFrom(task);
-        TaskEntity savedTaskEntity = taskService.createTask(taskEntity);
+        TaskEntity savedTaskEntity = taskService.saveTask(taskEntity);
         return new ResponseEntity<>(taskMapper.mapTo(savedTaskEntity), HttpStatus.CREATED);
     }
 
@@ -50,6 +48,21 @@ public class TaskController {
             TaskDto taskDto = taskMapper.mapTo(taskEntity);
             return new ResponseEntity<>(taskDto, HttpStatus.OK);
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping(path = "/tasks/{id}")
+    public ResponseEntity<TaskDto> fullUpdateTask(
+            @PathVariable("id") Long id,
+            @RequestBody TaskDto taskDto) {
+
+        if (!taskService.isExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        taskDto.setId(id);
+        TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
+        TaskEntity savedTaskEntity = taskService.saveTask(taskEntity);
+        return new ResponseEntity<>(taskMapper.mapTo(savedTaskEntity), HttpStatus.OK);
     }
 
 }

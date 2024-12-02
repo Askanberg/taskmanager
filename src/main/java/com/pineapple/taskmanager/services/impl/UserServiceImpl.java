@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity createUser(UserEntity userEntity) {
+    public UserEntity saveUser(UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
 
@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserEntity> findOne(Long id){
         return userRepository.findById(id);
+    }
+
+    @Override
+    public boolean isExists(Long id){
+        return userRepository.existsById(id);
     }
 
 }

@@ -7,9 +7,11 @@ import java.util.Optional;
 
 public interface TaskService {
 
-    TaskEntity createTask(TaskEntity taskEntity);
+    TaskEntity saveTask(TaskEntity taskEntity);
 
     List<TaskEntity> findAll();
 
     Optional<TaskEntity> findOne(Long id);
+
+    boolean isExists(Long id);
 }

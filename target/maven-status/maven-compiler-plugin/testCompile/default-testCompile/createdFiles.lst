@@ -1,5 +1,5 @@
-com\pineapple\taskmanager\repositories\ProjectRepositoryIntegrationTest.class
 com\pineapple\taskmanager\TestDataUtilities.class
-com\pineapple\taskmanager\repositories\TaskRepositoryIntegrationTest.class
-com\pineapple\taskmanager\repositories\UserRepositoryIntegrationTest.class
+com\pineapple\taskmanager\controllers\ProjectControllerIntegrationTests.class
+com\pineapple\taskmanager\controllers\TaskControllerIntegrationTests.class
+com\pineapple\taskmanager\controllers\UserControllerIntegrationTests.class
 com\pineapple\taskmanager\TaskmanagerApplicationTests.class

@@ -30,7 +30,7 @@ public class ProjectController {
     public ResponseEntity<ProjectDto> createProject(
             @RequestBody ProjectDto projectDto) {
         ProjectEntity projectEntity = projectMapper.mapFrom(projectDto);
-        ProjectEntity savedProjectEntity = projectService.createProject(projectEntity);
+        ProjectEntity savedProjectEntity = projectService.saveProject(projectEntity);
         return new ResponseEntity<>(projectMapper.mapTo(savedProjectEntity), HttpStatus.CREATED);
     }
 
@@ -49,5 +49,21 @@ public class ProjectController {
             ProjectDto projectDto = projectMapper.mapTo(projectEntity);
             return new ResponseEntity<>(projectDto, HttpStatus.OK);
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/projects/{id}")
+    public ResponseEntity<ProjectDto> fullUpdateProject(
+            @PathVariable("id") Long id,
+            @RequestBody ProjectDto projectDto){
+        if (!projectService.isExist(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        projectDto.setId(id);
+        ProjectEntity projectEntity = projectMapper.mapFrom(projectDto);
+        ProjectEntity savedProjectEntity = projectService.saveProject(projectEntity);
+
+        return new ResponseEntity<>(projectMapper.mapTo(savedProjectEntity), HttpStatus.OK);
+
     }
 }

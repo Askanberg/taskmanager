@@ -2,6 +2,7 @@ package com.pineapple.taskmanager.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pineapple.taskmanager.TestDataUtilities;
+import com.pineapple.taskmanager.domain.dto.TaskDto;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.domain.entities.UserEntity;
 import com.pineapple.taskmanager.services.TaskService;
@@ -79,8 +80,8 @@ public class TaskControllerIntegrationTests {
 
     @Test
     public void testThatListTasksReturnsListOfTasks() throws Exception {
-        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserA());
-        taskService.createTask(testTaskA);
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        taskService.saveTask(testTaskA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/tasks")
@@ -95,9 +96,9 @@ public class TaskControllerIntegrationTests {
     }
 
     @Test
-    public void testThatGetUserReturnsHttpStatus200IfUserExists () throws Exception {
-        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserA());
-        taskService.createTask(testTaskA);
+    public void testThatGetTaskReturnsHttpStatus200IfUserExists () throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        taskService.saveTask(testTaskA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/tasks/1")
@@ -106,10 +107,61 @@ public class TaskControllerIntegrationTests {
     }
 
     @Test
-    public void testThatGetUserReturnsHttpStatus404IfUserDontExist () throws Exception {
+    public void testThatGetTaskReturnsHttpStatus404IfUserDontExist () throws Exception {
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/tasks/99")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void testThatFullUpdateTaskReturnsHttpStatus404IfUserDontExist () throws Exception {
+        TaskDto taskDto = TestDataUtilities.createTestTaskDtoA(TestDataUtilities.createTestUserEntityA());
+        String taskDtoJson = objectMapper.writeValueAsString(taskDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/tasks/99")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(taskDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void testThatFullUpdateTaskReturnsHttpStatus200IfUserExists () throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        TaskEntity savedTaskA = taskService.saveTask(testTaskA);
+
+        TaskDto taskDto = TestDataUtilities.createTestTaskDtoA(TestDataUtilities.createTestUserEntityA());
+        String taskDtoJson = objectMapper.writeValueAsString(taskDto);
+
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/tasks/" + savedTaskA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(taskDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatFullUpdateTaskUpdatesExistingUser() throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        TaskEntity savedTaskA = taskService.saveTask(testTaskA);
+
+        TaskEntity taskDto = TestDataUtilities.createTestTaskB(TestDataUtilities.createTestUserEntityA());
+        taskDto.setId(savedTaskA.getId());
+
+        String taskDtoUpdateJson = objectMapper.writeValueAsString(taskDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/tasks/" + savedTaskA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(taskDtoUpdateJson)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.id").value(savedTaskA.getId())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.title").value(taskDto.getTitle())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.description").value(taskDto.getDescription())
+        );
     }
 }

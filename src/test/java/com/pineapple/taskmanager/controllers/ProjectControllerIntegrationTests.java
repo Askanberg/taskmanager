@@ -2,9 +2,9 @@ package com.pineapple.taskmanager.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pineapple.taskmanager.TestDataUtilities;
+import com.pineapple.taskmanager.domain.dto.ProjectDto;
 import com.pineapple.taskmanager.domain.entities.ProjectEntity;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
-import com.pineapple.taskmanager.domain.entities.UserEntity;
 import com.pineapple.taskmanager.services.ProjectService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,7 +38,7 @@ public class ProjectControllerIntegrationTests {
 
     @Test
     public void testThatCreateProjectReturnsHttpStatus201Created() throws Exception {
-        ProjectEntity projectEntity = TestDataUtilities.createTestProjectA(null);
+        ProjectEntity projectEntity = TestDataUtilities.createTestProjectEntityA(null);
         String projectJson = objectMapper.writeValueAsString(projectEntity);
 
         mockMvc.perform(
@@ -52,7 +52,7 @@ public class ProjectControllerIntegrationTests {
 
     @Test
     public void testThatCreateProjectReturnsSavedAuthor() throws Exception {
-        ProjectEntity projectEntity = TestDataUtilities.createTestProjectA(null);
+        ProjectEntity projectEntity = TestDataUtilities.createTestProjectEntityA(null);
         projectEntity.setId(0);
         String projectJson = objectMapper.writeValueAsString(projectEntity);
 
@@ -77,8 +77,8 @@ public class ProjectControllerIntegrationTests {
 
     @Test
     public void testThatListProjectsReturnsListOfProjects() throws Exception {
-        ProjectEntity testProjectA = TestDataUtilities.createTestProjectA(TestDataUtilities.createTestUserA());
-        projectService.createProject(testProjectA);
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        projectService.saveProject(testProjectA);
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/projects")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -91,8 +91,8 @@ public class ProjectControllerIntegrationTests {
 
     @Test
     public void testThatGetProjectReturnsHttpStatus200IfUserExists() throws Exception {
-        ProjectEntity testProjectA = TestDataUtilities.createTestProjectA(TestDataUtilities.createTestUserA());
-        projectService.createProject(testProjectA);
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        projectService.saveProject(testProjectA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/projects/1")
@@ -106,6 +106,55 @@ public class ProjectControllerIntegrationTests {
                 MockMvcRequestBuilders.get("/projects/99")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void testThatFullUpdateProjectReturnsHttpStatus404IfUserDontExist() throws Exception {
+        ProjectDto projectDto = TestDataUtilities.createTestProjectDtoA(TestDataUtilities.createTestUserEntityA());
+        String projectDtoJson = objectMapper.writeValueAsString(projectDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/projects/99")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(projectDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void testThatFullUpdateProjectReturnsHttpStatus200IfUserExists() throws Exception {
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        ProjectEntity savedTestProject = projectService.saveProject(testProjectA);
+
+        ProjectDto projectDto = TestDataUtilities.createTestProjectDtoA(TestDataUtilities.createTestUserEntityA());
+
+        String projectDtoJson = objectMapper.writeValueAsString(projectDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/projects/" + savedTestProject.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(projectDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatFullUpdateProjectUpdatesExistingUser() throws Exception {
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        ProjectEntity savedTestProjectA = projectService.saveProject(testProjectA);
+
+        ProjectDto projectDto = TestDataUtilities.createTestProjectDtoA(TestDataUtilities.createTestUserEntityA());
+        projectDto.setId(testProjectA.getId());
+
+        String projectUpdateDtoJson = objectMapper.writeValueAsString(projectDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/projects/" + savedTestProjectA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(projectUpdateDtoJson)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.id").value(savedTestProjectA.getId())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value(projectDto.getName())
+        );
     }
 
 }

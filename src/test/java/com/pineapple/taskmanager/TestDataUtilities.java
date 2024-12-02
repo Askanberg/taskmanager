@@ -1,5 +1,7 @@
 package com.pineapple.taskmanager;
 
+import com.pineapple.taskmanager.domain.dto.ProjectDto;
+import com.pineapple.taskmanager.domain.dto.TaskDto;
 import com.pineapple.taskmanager.domain.dto.UserDto;
 import com.pineapple.taskmanager.domain.entities.ProjectEntity;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
@@ -20,8 +22,8 @@ public class TestDataUtilities {
                 .userEntity(userEntity)
                 .build();
     }
-    public static TaskEntity createTestTaskDtoA(UserEntity userEntity) {
-        return TaskEntity.builder()
+    public static TaskDto createTestTaskDtoA(UserEntity userEntity) {
+        return TaskDto.builder()
                 .id(1L)
                 .title("TaskA")
                 .description("ContentA")
@@ -51,13 +53,20 @@ public class TestDataUtilities {
                 .build();
     }
 
-    public static UserEntity createTestUserA() {
+    public static UserEntity createTestUserEntityA() {
         return UserEntity.builder()
                 .id(1L)
                 .username("UserA")
                 .password("PasswordA")
                 .build();
 
+    }
+    public static UserDto createTestUserDtoA() {
+        return UserDto.builder()
+                .id(1L)
+                .username("UserA")
+                .password("PasswordA")
+                .build();
     }
     public static UserEntity createTestUserB() {
         return UserEntity.builder()
@@ -74,8 +83,15 @@ public class TestDataUtilities {
                 .build();
     }
 
-    public static ProjectEntity createTestProjectA(UserEntity userEntity) {
+    public static ProjectEntity createTestProjectEntityA(UserEntity userEntity) {
         return ProjectEntity.builder()
+                .id(1L)
+                .name("ProjectA")
+                .userEntity(userEntity)
+                .build();
+    }
+    public static ProjectDto createTestProjectDtoA(UserEntity userEntity) {
+        return ProjectDto.builder()
                 .id(1L)
                 .name("ProjectA")
                 .userEntity(userEntity)
@@ -88,4 +104,5 @@ public class TestDataUtilities {
                 .userEntity(userEntity)
                 .build();
     }
+
 }

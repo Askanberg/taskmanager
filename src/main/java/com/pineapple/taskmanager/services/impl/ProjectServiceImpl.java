@@ -21,7 +21,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectEntity createProject(ProjectEntity projectEntity) {
+    public ProjectEntity saveProject(ProjectEntity projectEntity) {
         return projectRepository.save(projectEntity);
     }
 
@@ -38,4 +38,11 @@ public class ProjectServiceImpl implements ProjectService {
     public Optional<ProjectEntity> findOne(Long id){
         return projectRepository.findById(id);
     }
+
+    @Override
+    public boolean isExist(Long id) {
+        return projectRepository.existsById(id);
+    }
+
+
 }

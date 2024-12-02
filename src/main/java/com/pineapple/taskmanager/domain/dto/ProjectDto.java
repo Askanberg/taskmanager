@@ -15,6 +15,6 @@ public class ProjectDto {
 
     private String name;
 
-    private UserDto userEntity;
+    private UserEntity userEntity;
 
 }

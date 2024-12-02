@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProjectService {
-    ProjectEntity createProject(ProjectEntity projectEntity);
+    ProjectEntity saveProject(ProjectEntity projectEntity);
 
     List<ProjectEntity> findAll();
 
     Optional<ProjectEntity> findOne(Long id);
+
+    boolean isExist(Long id);
 }

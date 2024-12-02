@@ -21,7 +21,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskEntity createTask(TaskEntity taskEntity){
+    public TaskEntity saveTask(TaskEntity taskEntity){
         return taskRepository.save(taskEntity);
     }
 
@@ -36,5 +36,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Optional<TaskEntity> findOne( Long id) {
         return taskRepository.findById(id);
+    }
+
+    @Override
+    public boolean isExists(Long id){
+        return taskRepository.existsById(id);
     }
 }
