@@ -6,6 +6,8 @@ import com.pineapple.taskmanager.domain.entities.ProjectEntity;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.mappers.Mapper;
 import com.pineapple.taskmanager.services.ProjectService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +36,10 @@ public class ProjectController {
         return new ResponseEntity<>(projectMapper.mapTo(savedProjectEntity), HttpStatus.CREATED);
     }
 
-    @GetMapping("/projects")
-    public List<ProjectDto> listProjects() {
-        List<ProjectEntity> projects = projectService.findAll();
-        return projects.stream()
-                .map(projectMapper::mapTo)
-                .collect(Collectors.toList());
+    @GetMapping(path = "/projects")
+    public Page<ProjectDto> listProjects(Pageable pageable) {
+        Page<ProjectEntity> projects = projectService.findAll(pageable);
+        return projects.map(projectMapper::mapTo);
     }
 
     @GetMapping("/projects/{id}")

@@ -5,19 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a21a8c0a-e81a-4b3a-a83b-a2f11d407bd5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/config/MapperConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/config/MapperConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/repositories/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/UserControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/UserControllerIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/controllers/ProjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/controllers/ProjectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/controllers/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/controllers/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/ProjectService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/ProjectService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/impl/TaskServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pineapple/taskmanager/services/impl/TaskServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.TaskmanagerApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.TaskmanagerApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.UserControllerIntegrationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.pineapple.taskmanager.controllers.UserControllerIntegrationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.TaskmanagerApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.TaskmanagerApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.UserControllerIntegrationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.pineapple.taskmanager.controllers.UserControllerIntegrationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/taskmanager-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/taskmanager-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/taskmanager-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/taskmanager-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +105,7 @@
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist">
+  <component name="RunManager" selected="JUnit.ProjectControllerIntegrationTests.testThatListProjectsReturnsListOfProjects">
     <configuration name="ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
@@ -120,7 +138,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProjectControllerIntegrationTests.testThatListProjectsReturnsListOfProjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="taskmanager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pineapple.taskmanager.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests" />
+      <option name="METHOD_NAME" value="testThatListProjectsReturnsListOfProjects" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskControllerIntegrationTests.testThatListTasksReturnsListOfTasks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -130,29 +164,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
+      <option name="METHOD_NAME" value="testThatListTasksReturnsListOfTasks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="taskmanager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.pineapple.taskmanager.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserExist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerIntegrationTests.testThatGetUserReturnsHttpStatus200IfUserExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -162,7 +180,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.UserControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
+      <option name="METHOD_NAME" value="testThatGetUserReturnsHttpStatus200IfUserExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatListProjectsReturnsListOfProjects" />
+        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatListTasksReturnsListOfTasks" />
+        <item itemvalue="JUnit.UserControllerIntegrationTests.testThatGetUserReturnsHttpStatus200IfUserExist" />
         <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist" />
         <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatDeleteTaskReturnsHttpStatus204IfUserExist" />
-        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
-        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserExist" />
-        <item itemvalue="JUnit.UserControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +214,7 @@
       <workItem from="1732288091421" duration="9207000" />
       <workItem from="1732465849156" duration="4272000" />
       <workItem from="1733143937678" duration="4555000" />
-      <workItem from="1733228863046" duration="3032000" />
+      <workItem from="1733228863046" duration="5461000" />
     </task>
     <servers />
   </component>

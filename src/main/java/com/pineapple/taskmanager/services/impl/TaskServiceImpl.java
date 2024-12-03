@@ -3,6 +3,8 @@ package com.pineapple.taskmanager.services.impl;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.repositories.TaskRepository;
 import com.pineapple.taskmanager.services.TaskService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +32,11 @@ public class TaskServiceImpl implements TaskService {
                 .spliterator(),
                 false)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<TaskEntity> findAll(Pageable pageable) {
+        return taskRepository.findAll(pageable);
     }
 
     @Override

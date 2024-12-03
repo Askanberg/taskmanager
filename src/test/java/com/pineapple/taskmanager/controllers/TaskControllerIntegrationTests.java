@@ -80,18 +80,19 @@ public class TaskControllerIntegrationTests {
 
     @Test
     public void testThatListTasksReturnsListOfTasks() throws Exception {
-        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        UserEntity testUserA = TestDataUtilities.createTestUserEntityA();
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(testUserA);
         taskService.saveTask(testTaskA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(
-                MockMvcResultMatchers.jsonPath("$[0].id").isNumber()
+                MockMvcResultMatchers.jsonPath("$.content[0].id").isNumber()
         ).andExpect(
-                MockMvcResultMatchers.jsonPath("$[0].title").value("TaskA")
+                MockMvcResultMatchers.jsonPath("$.content[0].title").value("TaskA")
         ).andExpect(
-                MockMvcResultMatchers.jsonPath("$[0].description").value("ContentA")
+                MockMvcResultMatchers.jsonPath("$.content[0].description").value("ContentA")
         );
     }
 

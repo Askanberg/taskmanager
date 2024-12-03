@@ -83,9 +83,9 @@ public class ProjectControllerIntegrationTests {
                 MockMvcRequestBuilders.get("/projects")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(
-                MockMvcResultMatchers.jsonPath("$[0].id").isNumber()
+                MockMvcResultMatchers.jsonPath("$.content[0].id").isNumber()
         ).andExpect(
-                MockMvcResultMatchers.jsonPath("$[0].name").value("ProjectA")
+                MockMvcResultMatchers.jsonPath("$.content[0].name").value("ProjectA")
         );
     }
 

@@ -5,6 +5,8 @@ import com.pineapple.taskmanager.domain.entities.TaskEntity;
 
 import com.pineapple.taskmanager.mappers.Mapper;
 import com.pineapple.taskmanager.services.TaskService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +35,9 @@ public class TaskController {
     }
 
     @GetMapping(path = "/tasks")
-    public List<TaskDto> listTasks() {
-        List<TaskEntity> tasks = taskService.findAll();
-        return tasks.stream()
-                .map(taskMapper::mapTo)
-                .collect(Collectors.toList());
-
+    public Page<TaskDto> listTasks(Pageable pageable) {
+        Page<TaskEntity> tasks = taskService.findAll(pageable);
+        return tasks.map(taskMapper::mapTo);
     }
 
     @GetMapping(path = "/tasks/{id}")

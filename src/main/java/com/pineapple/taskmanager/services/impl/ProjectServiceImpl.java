@@ -3,6 +3,8 @@ package com.pineapple.taskmanager.services.impl;
 import com.pineapple.taskmanager.domain.entities.ProjectEntity;
 import com.pineapple.taskmanager.repositories.ProjectRepository;
 import com.pineapple.taskmanager.services.ProjectService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class ProjectServiceImpl implements ProjectService {
                 spliterator(),
                 false)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<ProjectEntity> findAll(Pageable pageable) {
+        return projectRepository.findAll(pageable);
     }
 
     @Override
