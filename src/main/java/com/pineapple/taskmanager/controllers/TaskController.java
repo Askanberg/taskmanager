@@ -65,5 +65,31 @@ public class TaskController {
         return new ResponseEntity<>(taskMapper.mapTo(savedTaskEntity), HttpStatus.OK);
     }
 
+    @PatchMapping(path = "/tasks/{id}")
+    public ResponseEntity<TaskDto> partialUpdateTask(
+            @PathVariable("id") Long id,
+            @RequestBody TaskDto taskDto) {
+
+        if (!taskService.isExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
+        TaskEntity updatedTaskEntity = taskService.partialUpdate(id, taskEntity);
+        return new ResponseEntity<>(taskMapper.mapTo(updatedTaskEntity), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/tasks/{id}")
+    public ResponseEntity<TaskDto> deleteTask(
+            @PathVariable("id") Long id) {
+
+        if (!taskService.isExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        taskService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
 

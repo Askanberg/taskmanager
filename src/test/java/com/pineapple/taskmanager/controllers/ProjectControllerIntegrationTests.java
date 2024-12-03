@@ -130,7 +130,7 @@ public class ProjectControllerIntegrationTests {
         String projectDtoJson = objectMapper.writeValueAsString(projectDto);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.get("/projects/" + savedTestProject.getId())
+                MockMvcRequestBuilders.put("/projects/" + savedTestProject.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(projectDtoJson)
         ).andExpect(MockMvcResultMatchers.status().isOk());
@@ -156,5 +156,61 @@ public class ProjectControllerIntegrationTests {
                 MockMvcResultMatchers.jsonPath("$.name").value(projectDto.getName())
         );
     }
+
+    @Test
+    public void testThatPartialUpdateProjectReturnsHttpStatus200IfUserExists() throws Exception {
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        ProjectEntity savedTestProject = projectService.saveProject(testProjectA);
+
+        ProjectDto projectDto = TestDataUtilities.createTestProjectDtoA(TestDataUtilities.createTestUserEntityA());
+
+        String projectDtoJson = objectMapper.writeValueAsString(projectDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/projects/" + savedTestProject.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(projectDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatPartialUpdateProjectUpdatesExistingUser() throws Exception {
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        ProjectEntity savedTestProjectA = projectService.saveProject(testProjectA);
+
+        ProjectDto projectDto = TestDataUtilities.createTestProjectDtoA(TestDataUtilities.createTestUserEntityA());
+        projectDto.setName("UPDATED");
+        String projectDtoJson = objectMapper.writeValueAsString(projectDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/projects/" + savedTestProjectA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(projectDtoJson)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.id").value(savedTestProjectA.getId())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value("UPDATED")
+        );
+    }
+
+    @Test
+    public void testThatDeleteTaskReturnsHttpStatus204IfUserExist () throws Exception {
+        ProjectEntity testProjectA = TestDataUtilities.createTestProjectEntityA(TestDataUtilities.createTestUserEntityA());
+        ProjectEntity savedTestProjectA = projectService.saveProject(testProjectA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/projects/" + savedTestProjectA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
+    @Test
+    public void testThatDeleteProjectReturnsHttpStatus204IfUserDontExist () throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/projects/999")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
 
 }

@@ -9,14 +9,12 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/TaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/domain/dto/ProjectDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/domain/dto/ProjectDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/ProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/ProjectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/TaskServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pineapple/taskmanager/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/TestDataUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/TestDataUtilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/ProjectControllerIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/TaskControllerIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/UserControllerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/pineapple/taskmanager/controllers/UserControllerIntegrationTests.java" afterDir="false" />
@@ -89,8 +87,8 @@
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProjectControllerIntegrationTests.testThatFullUpdateProjectUpdatesExistingUser">
-    <configuration name="ProjectControllerIntegrationTests.testThatFullUpdateProjectReturnsHttpStatus200IfUserExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist">
+    <configuration name="ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -100,13 +98,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatFullUpdateProjectReturnsHttpStatus200IfUserExists" />
+      <option name="METHOD_NAME" value="testThatDeleteProjectReturnsHttpStatus204IfUserDontExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectControllerIntegrationTests.testThatFullUpdateProjectReturnsHttpStatus404IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProjectControllerIntegrationTests.testThatDeleteTaskReturnsHttpStatus204IfUserExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -116,29 +114,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatFullUpdateProjectReturnsHttpStatus404IfUserDontExist" />
+      <option name="METHOD_NAME" value="testThatDeleteTaskReturnsHttpStatus204IfUserExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectControllerIntegrationTests.testThatFullUpdateProjectUpdatesExistingUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="taskmanager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.pineapple.taskmanager.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.ProjectControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatFullUpdateProjectUpdatesExistingUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskControllerIntegrationTests.testThatFullUpdateTaskReturnsHttpStatus200IfUserExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -148,13 +130,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatFullUpdateTaskReturnsHttpStatus200IfUserExists" />
+      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TaskControllerIntegrationTests.testThatFullUpdateTaskUpdatesExistingUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="taskmanager" />
       <extension name="coverage">
         <pattern>
@@ -164,7 +146,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.TaskControllerIntegrationTests" />
-      <option name="METHOD_NAME" value="testThatFullUpdateTaskUpdatesExistingUser" />
+      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserExist" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="taskmanager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.pineapple.taskmanager.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.pineapple.taskmanager.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.pineapple.taskmanager.controllers.UserControllerIntegrationTests" />
+      <option name="METHOD_NAME" value="testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -179,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatFullUpdateProjectUpdatesExistingUser" />
-        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatFullUpdateProjectReturnsHttpStatus200IfUserExists" />
-        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatFullUpdateProjectReturnsHttpStatus404IfUserDontExist" />
-        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatFullUpdateTaskUpdatesExistingUser" />
-        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatFullUpdateTaskReturnsHttpStatus200IfUserExists" />
+        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatDeleteProjectReturnsHttpStatus204IfUserDontExist" />
+        <item itemvalue="JUnit.ProjectControllerIntegrationTests.testThatDeleteTaskReturnsHttpStatus204IfUserExist" />
+        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
+        <item itemvalue="JUnit.TaskControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserExist" />
+        <item itemvalue="JUnit.UserControllerIntegrationTests.testThatDeleteUserReturnsHttpStatus204IfUserDontExist" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +195,8 @@
       <updated>1727953881073</updated>
       <workItem from="1732288091421" duration="9207000" />
       <workItem from="1732465849156" duration="4272000" />
-      <workItem from="1733143937678" duration="4296000" />
+      <workItem from="1733143937678" duration="4555000" />
+      <workItem from="1733228863046" duration="3032000" />
     </task>
     <servers />
   </component>

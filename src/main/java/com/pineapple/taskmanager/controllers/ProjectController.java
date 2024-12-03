@@ -64,6 +64,33 @@ public class ProjectController {
         ProjectEntity savedProjectEntity = projectService.saveProject(projectEntity);
 
         return new ResponseEntity<>(projectMapper.mapTo(savedProjectEntity), HttpStatus.OK);
-
     }
+
+    @PatchMapping("/projects/{id}")
+    public ResponseEntity<ProjectDto> partialUpdateProject(
+            @PathVariable("id") Long id,
+            @RequestBody ProjectDto projectDto){
+
+        if (!projectService.isExist(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        ProjectEntity projectEntity = projectMapper.mapFrom(projectDto);
+        ProjectEntity updatedProjectEntity = projectService.partialUpdate(id, projectEntity);
+        return new ResponseEntity<>(projectMapper.mapTo(updatedProjectEntity), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/projects/{id}")
+    public ResponseEntity<ProjectDto> deleteProject(
+            @PathVariable("id") Long id){
+
+        if (!projectService.isExist(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        projectService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
 }

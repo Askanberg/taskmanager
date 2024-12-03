@@ -44,5 +44,18 @@ public class ProjectServiceImpl implements ProjectService {
         return projectRepository.existsById(id);
     }
 
+    @Override
+    public ProjectEntity partialUpdate(Long id, ProjectEntity projectEntity) {
+        projectEntity.setId(id);
 
+        return projectRepository.findById(id).map(existingProject -> {
+            Optional.ofNullable(projectEntity.getName()).ifPresent(existingProject::setName);
+            return projectRepository.save(existingProject);
+        }).orElseThrow(() -> new RuntimeException("Project does not exist!"));
+    }
+
+    @Override
+    public void delete(Long id) {
+        projectRepository.deleteById(id);
+    }
 }

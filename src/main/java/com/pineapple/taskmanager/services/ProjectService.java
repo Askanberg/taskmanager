@@ -14,4 +14,8 @@ public interface ProjectService {
     Optional<ProjectEntity> findOne(Long id);
 
     boolean isExist(Long id);
+
+    ProjectEntity partialUpdate(Long id, ProjectEntity projectEntity);
+
+    void delete(Long id);
 }

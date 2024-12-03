@@ -14,4 +14,8 @@ public interface TaskService {
     Optional<TaskEntity> findOne(Long id);
 
     boolean isExists(Long id);
+
+    TaskEntity partialUpdate(Long id, TaskEntity taskEntity);
+
+    void delete(Long id);
 }

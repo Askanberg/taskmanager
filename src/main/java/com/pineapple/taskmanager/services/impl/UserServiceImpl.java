@@ -1,5 +1,6 @@
 package com.pineapple.taskmanager.services.impl;
 
+import com.pineapple.taskmanager.domain.dto.UserDto;
 import com.pineapple.taskmanager.domain.entities.UserEntity;
 import com.pineapple.taskmanager.repositories.UserRepository;
 import com.pineapple.taskmanager.services.UserService;
@@ -42,4 +43,19 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsById(id);
     }
 
+    @Override
+    public UserEntity partialUpdate(Long id, UserEntity userEntity) {
+        userEntity.setId(id);
+
+        return userRepository.findById(id).map(existingUser -> {
+            Optional.ofNullable(userEntity.getUsername()).ifPresent(existingUser::setUsername);
+            Optional.ofNullable(userEntity.getPassword()).ifPresent(existingUser::setPassword);
+            return userRepository.save(existingUser);
+        }).orElseThrow(() -> new RuntimeException("User does not exist"));
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
 }

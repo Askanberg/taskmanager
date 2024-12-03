@@ -63,7 +63,30 @@ public class UserController {
         UserEntity userEntity = userMapper.mapFrom(userDto);
         UserEntity savedUserEntity = userService.saveUser(userEntity);
         return new ResponseEntity<>(userMapper.mapTo(savedUserEntity), HttpStatus.OK);
+    }
 
+    @PatchMapping(path= "/users/{id}")
+    public ResponseEntity<UserDto> partialUpdateUser(
+            @PathVariable("id") Long id,
+            @RequestBody UserDto userDto){
+
+        if(!userService.isExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        UserEntity userEntity = userMapper.mapFrom(userDto);
+        UserEntity updatedUser = userService.partialUpdate(id, userEntity);
+        return new ResponseEntity<>(userMapper.mapTo(updatedUser), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path= "/users/{id}")
+    public ResponseEntity<UserDto> deleteUser(
+            @PathVariable("id") Long id){
+        if(!userService.isExists(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

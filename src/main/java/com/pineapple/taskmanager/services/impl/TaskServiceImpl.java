@@ -1,6 +1,5 @@
 package com.pineapple.taskmanager.services.impl;
 
-import com.pineapple.taskmanager.domain.dto.TaskDto;
 import com.pineapple.taskmanager.domain.entities.TaskEntity;
 import com.pineapple.taskmanager.repositories.TaskRepository;
 import com.pineapple.taskmanager.services.TaskService;
@@ -41,5 +40,21 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public boolean isExists(Long id){
         return taskRepository.existsById(id);
+    }
+
+    @Override
+    public TaskEntity partialUpdate(Long id, TaskEntity taskEntity) {
+        taskEntity.setId(id);
+
+        return taskRepository.findById(id).map(existingTask -> {
+            Optional.ofNullable(taskEntity.getTitle()).ifPresent(existingTask::setTitle);
+            Optional.ofNullable(taskEntity.getDescription()).ifPresent(existingTask::setDescription);
+            return taskRepository.save(existingTask);
+        }).orElseThrow(() -> new RuntimeException("Task does not exist!"));
+    }
+
+    @Override
+    public void delete(Long id) {
+        taskRepository.deleteById(id);
     }
 }

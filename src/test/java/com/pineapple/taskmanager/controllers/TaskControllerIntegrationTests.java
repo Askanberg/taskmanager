@@ -164,4 +164,62 @@ public class TaskControllerIntegrationTests {
                 MockMvcResultMatchers.jsonPath("$.description").value(taskDto.getDescription())
         );
     }
+
+    @Test
+    public void testThatPartialUpdateTaskReturnsHttpStatus200IfUserExists () throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        TaskEntity savedTaskA = taskService.saveTask(testTaskA);
+
+        TaskDto taskDto = TestDataUtilities.createTestTaskDtoA(TestDataUtilities.createTestUserEntityA());
+        String taskDtoJson = objectMapper.writeValueAsString(taskDto);
+
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/tasks/" + savedTaskA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(taskDtoJson)
+        ).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testThatPartialUpdateTaskUpdatesExistingUser() throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        TaskEntity savedTaskA = taskService.saveTask(testTaskA);
+
+        TaskDto taskDto = TestDataUtilities.createTestTaskDtoA(TestDataUtilities.createTestUserEntityA());
+        taskDto.setTitle("UPDATED");
+        String taskDtoJson = objectMapper.writeValueAsString(taskDto);
+
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/tasks/" + savedTaskA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(taskDtoJson)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.id").value(savedTaskA.getId())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.title").value("UPDATED")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.description").value(taskDto.getDescription())
+        );
+    }
+
+    @Test
+    public void testThatDeleteTaskReturnsHttpStatus204IfUserExist () throws Exception {
+        TaskEntity testTaskA = TestDataUtilities.createTestTaskEntityA(TestDataUtilities.createTestUserEntityA());
+        TaskEntity savedTaskA = taskService.saveTask(testTaskA);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/tasks/" + savedTaskA.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
+    @Test
+    public void testThatDeleteTaskReturnsHttpStatus204IfUserDontExist () throws Exception {
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/tasks/999")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
 }
